@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>frag_window</class>
+ <widget class="QMainWindow" name="frag_window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>559</width>
+    <height>253</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>GLSL Image Processing Example</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="frag_sampler.qrc">
+    <normaloff>:/images/Moon.png</normaloff>:/images/Moon.png</iconset>
+  </property>
+  <property name="locale">
+   <locale language="English" country="Canada"/>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>559</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="action_file_open_image"/>
+    <addaction name="action_file_save_image"/>
+    <addaction name="separator"/>
+    <addaction name="action_file_read_supported_format"/>
+    <addaction name="action_file_write_supported_format"/>
+    <addaction name="action_file_exit"/>
+   </widget>
+   <widget class="QMenu" name="menuFilter">
+    <property name="title">
+     <string>Filter</string>
+    </property>
+    <addaction name="action_filter_original"/>
+    <addaction name="action_filter_inverse"/>
+    <addaction name="action_filter_mosaic"/>
+    <addaction name="action_filter_median_3X3"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuFilter"/>
+  </widget>
+  <action name="action_file_exit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="action_help_about">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="action_file_open_image">
+   <property name="text">
+    <string>Open Image</string>
+   </property>
+  </action>
+  <action name="action_file_save_image">
+   <property name="text">
+    <string>Save Image</string>
+   </property>
+  </action>
+  <action name="action_filter_original">
+   <property name="text">
+    <string>Original</string>
+   </property>
+  </action>
+  <action name="action_filter_inverse">
+   <property name="text">
+    <string>Inverse</string>
+   </property>
+  </action>
+  <action name="action_file_read_supported_format">
+   <property name="text">
+    <string>List Supported Image Format to Read</string>
+   </property>
+  </action>
+  <action name="action_file_write_supported_format">
+   <property name="text">
+    <string>List Supported Image Format to Write</string>
+   </property>
+  </action>
+  <action name="action_filter_median_3X3">
+   <property name="text">
+    <string>Median Filter 3X3</string>
+   </property>
+  </action>
+  <action name="action_filter_mosaic">
+   <property name="text">
+    <string>Mosaic</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="frag_sampler.qrc"/>
+ </resources>
+ <connections/>
+</ui>

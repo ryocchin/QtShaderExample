@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>shaders/median3.frag</file>
+        <file>shaders/median3.vert</file>
+        <file>shaders/mosaic.frag</file>
+        <file>shaders/mosaic.vert</file>
+        <file>shaders/copy.frag</file>
+        <file>shaders/copy.vert</file>
+        <file>images/Moon.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="frag_pane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frag_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frag_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frag_window_ut.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tmp\rcc\Debug_shared\qrc_frag_sampler.cpp">
+      <Filter>Moc</Filter>
+    </ClCompile>
+    <ClCompile Include="tmp\moc\Debug_shared\moc_frag_pane.cpp">
+      <Filter>Moc</Filter>
+    </ClCompile>
+    <ClCompile Include="tmp\moc\Debug_shared\moc_frag_window.cpp">
+      <Filter>Moc</Filter>
+    </ClCompile>
+    <ClCompile Include="tmp\moc\Release_shared\moc_frag_pane.cpp">
+      <Filter>Moc</Filter>
+    </ClCompile>
+    <ClCompile Include="tmp\moc\Release_shared\moc_frag_window.cpp">
+      <Filter>Moc</Filter>
+    </ClCompile>
+    <ClCompile Include="tmp\rcc\Release_shared\qrc_frag_sampler.cpp">
+      <Filter>Moc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="frag_pane.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="frag_window.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="frag_window.ui">
+      <Filter>Form</Filter>
+    </CustomBuild>
+    <CustomBuild Include="frag_sampler.qrc">
+      <Filter>Resource</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{76b069ac-b724-4945-ba69-5746cfc95793}</UniqueIdentifier>
+      <Extensions>qrc</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{c8f108d6-b96b-4744-9a25-2abbbc2f8f75}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Form">
+      <UniqueIdentifier>{940b62df-8ff6-467d-85aa-29d4f935d8ef}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{ac6e2ca4-e4dd-4591-9d14-03a9008f1775}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{0b0ada8c-6bb5-4b18-a62e-73ee3d4fd8e4}</UniqueIdentifier>
+      <Extensions>vert;frag;glsl</Extensions>
+    </Filter>
+    <Filter Include="Moc">
+      <UniqueIdentifier>{addf9dbb-bec5-497b-86da-56d94b9db7ab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\median3.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shaders\median3.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shaders\mosaic.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shaders\mosaic.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shaders\copy.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shaders\copy.vert">
+      <Filter>Shader</Filter>
+    </None>
+  </ItemGroup>
+</Project>
