@@ -11,7 +11,8 @@ namespace Ui {
 
 class frag_pane;
 
-class frag_window : public QMainWindow, protected QOpenGLFunctions
+class frag_window : public QMainWindow
+//class frag_window : public QMainWindow, protected QOpenGLFunctions
 {
    Q_OBJECT
 

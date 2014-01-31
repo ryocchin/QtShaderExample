@@ -77,7 +77,7 @@ void frag_pane::clear( void )
 
 void frag_pane::initializeGL( void )
 {
-   initializeGLFunctions( );
+   initializeOpenGLFunctions( );
    glClearColor( 0.0f, 0.0f, 0.0f, 1.0f ); 
    
    // create all shader programs
@@ -276,8 +276,9 @@ bool frag_pane::setTexture( void )
    glLoadIdentity( );
    
    glEnable( GL_TEXTURE_2D );
-   _out_fbo->drawTexture( QPointF(0.0,0.0), _in_fbo->texture( ), GL_TEXTURE_2D );
    
+   _out_fbo->drawTexture( QPointF(0.0,0.0), _in_fbo->texture( ), GL_TEXTURE_2D );
+
    releaseShader( );
       
    _out_fbo->release();
@@ -327,7 +328,6 @@ void frag_pane::bindShader( void )
       _mosaic_program.setUniformValue( "imgWidth", nWidth );
       _mosaic_program.setUniformValue( "imgHeight", nHeight );
       _mosaic_program.setUniformValue( "nPixels", 5 );
-      _mosaic_program.setUniformValue( "nType", 0 );
       break; 
 
    case ImageProcMedian3X3:
@@ -597,8 +597,8 @@ PIX_EXIT:
 bool frag_pane::createInverseShader( void )
 {
    bool bRetCode = false;   
-   QGLShader *vshader1 = NULL;
-   QGLShader *fshader1 = NULL; 
+   QOpenGLShader *vshader1 = NULL;
+   QOpenGLShader *fshader1 = NULL; 
    
    const char *vsrc1 =
       "varying vec2 pos;\n"
@@ -621,10 +621,9 @@ bool frag_pane::createInverseShader( void )
       "	gl_FragColor.g = 1.0 - col.g;\n"
       "	gl_FragColor.b = 1.0 - col.b;\n"
       "}\n";
-
-   
-   vshader1 = new QGLShader(QGLShader::Vertex, this);
-   fshader1 = new QGLShader(QGLShader::Fragment, this);
+      
+   vshader1 = new QOpenGLShader(QOpenGLShader::Vertex, this);
+   fshader1 = new QOpenGLShader(QOpenGLShader::Fragment, this);
    
    if( !vshader1->compileSourceCode(vsrc1) ) {
       goto PIX_EXIT;
@@ -644,11 +643,7 @@ bool frag_pane::createInverseShader( void )
     
    if( !_inverse_program.link( ) ) {
      goto PIX_EXIT;
-   }
-
-   _image_attr = _inverse_program.uniformLocation( "image" );
-   _width_attr = _inverse_program.uniformLocation( "imgWidth" );
-   _height_attr = _inverse_program.uniformLocation( "imgHeight" );    
+   }  
 
    // --- DONE ---
    bRetCode = true;
@@ -663,7 +658,7 @@ PIX_EXIT:
 // shader programs are created as separate files and included
 // in the resource file(qrc) using Qt Creator
 //
-bool frag_pane::createSingleShader( QGLShaderProgram *pShader,
+bool frag_pane::createSingleShader( QOpenGLShaderProgram *pShader,
                                     const QString strVertexFile, 
                                     const QString strFragmentFile )
 {
@@ -675,14 +670,14 @@ bool frag_pane::createSingleShader( QGLShaderProgram *pShader,
    
    // Compile vertex shader
    
-   if( !pShader->addShaderFromSourceFile( QGLShader::Vertex, strVertexFile ) ) {
+   if( !pShader->addShaderFromSourceFile( QOpenGLShader::Vertex, strVertexFile ) ) {
       qDebug() << "Unable to compile vertex shader. Log:" << pShader->log();
       goto PIX_EXIT;
    }
 
    // Compile fragment shader
 
-   if( !pShader->addShaderFromSourceFile( QGLShader::Fragment, strFragmentFile ) ) {
+   if( !pShader->addShaderFromSourceFile( QOpenGLShader::Fragment, strFragmentFile ) ) {
       qDebug() << "Unable to compile fragment shader. Log:" << pShader->log();
       goto PIX_EXIT;
    }
@@ -695,6 +690,7 @@ bool frag_pane::createSingleShader( QGLShaderProgram *pShader,
    }
 
    // Restore system locale
+
    setlocale(LC_ALL, "");
 
    // --- DONE ---

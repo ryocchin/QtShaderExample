@@ -4,14 +4,13 @@
 #include <QtGui>
 #include <QApplication>
 #include <QtOpenGL>
-#include <QGLFunctions>
 #include <QGLWidget>
 #include <QMainWindow>
-#include <QGLShaderProgram>
+#include <QOpenGLShaderProgram>
 
 class frag_window;
 
-class frag_pane : public QGLWidget, protected QGLFunctions
+class frag_pane : public QGLWidget, protected QOpenGLFunctions
 {
     Q_OBJECT
        
@@ -39,15 +38,11 @@ private:
       
 private:
    // shader programs
-      
-   int _image_attr;
-   int _width_attr;
-   int _height_attr;
     
-   QGLShaderProgram _copy_program;
-   QGLShaderProgram _inverse_program;
-   QGLShaderProgram _mosaic_program;
-   QGLShaderProgram _median3_program;
+   QOpenGLShaderProgram _copy_program;
+   QOpenGLShaderProgram _inverse_program;
+   QOpenGLShaderProgram _mosaic_program;
+   QOpenGLShaderProgram _median3_program;
    
    // FBO that contains the texture(image) read from the file
    QGLFramebufferObject *_in_fbo;
@@ -86,7 +81,7 @@ private:
    bool createShaders( void );
    bool createInverseShader( void );
       
-   bool createSingleShader( QGLShaderProgram *pShader,
+   bool createSingleShader( QOpenGLShaderProgram *pShader,
       const QString strVertexFile, 
       const QString strFragmentFile );
 };

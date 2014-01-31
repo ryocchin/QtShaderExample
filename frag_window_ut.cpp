@@ -2,8 +2,8 @@
 #include "frag_window.h"
 
 //
-// make filter string for QFileDialog to get supported image files 
-// string.
+// make filter string to be used in QFileDialog 
+// to get a list of supported image formats.
 //
 static void ImageFileFilter( QStringList &strFilters,	// [o] list of supported image formats
                             bool bRead ) // [i] to read or wrote the image
@@ -81,10 +81,13 @@ static void ImageFileFilter( QString &strFilter, // [o] list of supported image 
    return;
 }
 
+//
+// select single image file from dialog
+// show the image on widget
+// 
 bool frag_window::selectSingleImage( void )
 {
    bool bRetCode = false;
-   int nSize;
    frag_pane *pPane = getPane( );  
    QFileInfo finfo;
    QString strPath, strMessage, strLastDir, strLabel, strFile;
@@ -100,16 +103,18 @@ QApplication::setOverrideCursor( Qt::BusyCursor );
 
    QFileDialog::Options options;
    
-   // show dialog and get the results
+   // get the last directory image was selected
    
    strLastDir = QDir::currentPath( );
    strLastDir = settings.value( strKeyDir, strLastDir ).toString( );
-      
+    
+   // create filter strings used in QFileDialog
+   // to choose from supported image files
+
    ImageFileFilter( strFilters, true );
-   nSize = (int)strFilters.size( );
   
    //
-   // select two images
+   // select a image
    //
   
    options = QFileDialog::ReadOnly;
@@ -163,7 +168,6 @@ QApplication::restoreOverrideCursor( );
 bool frag_window::saveSingleImage( void )
 {
    bool bRetCode = false;
-   int nSize;
    frag_pane *pPane = getPane( );  
    QFileInfo finfo;
    QString strPath, strMessage, strLastDir, strLabel, strFile;
@@ -179,23 +183,21 @@ QApplication::setOverrideCursor( Qt::BusyCursor );
    QString strApplication = qApp->applicationName( );
    QSettings settings( strOrganisation, strApplication );
    
-   //
-
    if( !pPane->validImageProc( ) ) {
       goto PIX_EXIT;
    }
-
-   // show dialog and get the results
+   
+   // get the last directory image was selected
    
    strLastDir = QDir::currentPath( );
    strLastDir = settings.value( strKeyDir, strLastDir ).toString( );
    
+   // create filter strings used in QFileDialog
+   // to choose from supported image files
+
    ImageFileFilter( strFilters, false );
-   nSize = (int)strFilters.size( );
   
-   //
    // select image name
-   //
   
    options = QFileDialog::DontConfirmOverwrite;
    strLabel = "Select Image";

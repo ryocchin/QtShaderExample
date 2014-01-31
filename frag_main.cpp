@@ -17,7 +17,7 @@ int main(int argc, char **argv)
    app.setOrganizationDomain( "www.pixtopo.com" );
    app.setApplicationVersion("1.0");
    
-   if (!QGLFormat::hasOpenGL() || !QGLFramebufferObject::hasOpenGLFramebufferObjects()) {
+   if( !QGLFramebufferObject::hasOpenGLFramebufferObjects()) {
       QMessageBox::information( 0, 
          app.applicationName( ),
          "This system does not support OpenGL/framebuffer objects.");

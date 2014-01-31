@@ -1,3 +1,6 @@
+//
+// Vertex shader for mosaic image
+//
 varying vec2 pos;
 
 void main(void)
