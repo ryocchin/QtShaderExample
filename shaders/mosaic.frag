@@ -1,7 +1,7 @@
 //
 // Fragment Shader for Image processing
 //
-// Mosaic Filter
+// Mosaic Filter by Average
 //
 
 //
@@ -16,15 +16,16 @@ varying vec2 pos;
 void main(void)
 {
    vec2 texCoord;
-   int iCol = floor(pos.x / float(nPixels));
-   int iRow = floor(pos.y / float(nPixels));
-        
-   // Mosaic by Average
    int i, j;
+   int iCol = int( floor(pos.x / float(nPixels)) );
+   int iRow = int( floor(pos.y / float(nPixels)) );
+   int iRowStart = iRow*nPixels;
+   int iColStart = iCol*nPixels;
+
    vec4 sum = vec4(0.0);
    int cnt = 0;    
-   for(int j = iRow*nPixels ; j < iRow*nPixels + nPixels ; j++) {
-      for(int i = iCol*nPixels; i < iCol*nPixels + nPixels; i++) {
+   for( j = iRowStart ; j < iRowStart + nPixels ; j++) {
+      for( i = iColStart; i < iColStart + nPixels; i++) {
          texCoord = vec2(float(i) / float(imgWidth),
             float(j) / float(imgHeight));
          sum += texture2D(image, texCoord);
@@ -32,6 +33,5 @@ void main(void)
       }
    }
 
-   gl_FragColor.rgb = sum.rgb / (float(cnt));
-  
+   gl_FragColor.rgb = sum.rgb / (float(cnt));  
 }

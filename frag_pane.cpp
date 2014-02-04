@@ -662,32 +662,38 @@ bool frag_pane::createSingleShader( QOpenGLShaderProgram *pShader,
                                     const QString strVertexFile, 
                                     const QString strFragmentFile )
 {
-   bool bRetCode = false;   
-   
+   bool bRetCode = false;
+
    // Override system locale until shaders are compiled
 
    setlocale(LC_NUMERIC, "C");
    
    // Compile vertex shader
-   
+  
    if( !pShader->addShaderFromSourceFile( QOpenGLShader::Vertex, strVertexFile ) ) {
       qDebug() << "Unable to compile vertex shader. Log:" << pShader->log();
       goto PIX_EXIT;
    }
 
+   //qDebug() << "Vertex shader. Log:" << pShader->log();
+  
    // Compile fragment shader
 
    if( !pShader->addShaderFromSourceFile( QOpenGLShader::Fragment, strFragmentFile ) ) {
       qDebug() << "Unable to compile fragment shader. Log:" << pShader->log();
       goto PIX_EXIT;
    }
-   
+  
+   //qDebug() << "Fragment shader. Log:" << pShader->log();
+
    // Link shader pipeline
    
    if( !pShader->link( ) ) {
       qDebug() << "Unable to link shader program. Log:" << pShader->log();
       goto PIX_EXIT;
    }
+   
+   //qDebug() << "Linking shader program. Log:" << pShader->log();
 
    // Restore system locale
 
